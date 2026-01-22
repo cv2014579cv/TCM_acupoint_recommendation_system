@@ -1,0 +1,2 @@
+# TCM_acupoint_recommendayion_system
+中醫穴位推薦系統的前端與後端檔案，以及建構推薦系統所用到的背景資料。
