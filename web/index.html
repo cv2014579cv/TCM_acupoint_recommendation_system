@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中醫穴位按摩推薦系統 - TCM Acupoint Recommender</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="accent">TCM</span> Acupoint Recommender
+            </div>
+            <nav>
+                <div id="status-indicator" class="status">系統就緒</div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Left Column: Input (Symptoms + Map) -->
+            <div class="input-column">
+                <div class="card glass input-mother-card">
+                    <section class="symptoms-group">
+                        <h2><i class="icon">🔍</i> 症狀輸入</h2>
+                        <p class="subtitle">請輸入您的症狀</p>
+                        
+                        <div class="input-wrapper">
+                            <div class="input-group">
+                                <input type="text" id="symptom-input" placeholder="選擇或輸入症狀..." autocomplete="off">
+                                <button id="add-symptom" class="primary">新增</button>
+                            </div>
+                            <div id="symptom-dropdown" class="dropdown-list glass" style="display: none;">
+                                <!-- List items will be injected here -->
+                            </div>
+                        </div>
+                        
+                        <div id="selected-symptoms" class="tag-container">
+                            <!-- Tags will appear here -->
+                        </div>
+
+                        <div class="symptom-actions">
+                            <button id="clear-all" class="secondary">清除全部</button>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <section class="visual-panel">
+                        <div class="map-header">
+                            <h2><i class="icon">📍</i> 經脈分布圖選穴</h2>
+                            <div class="map-controls">
+                                <button class="view-btn active" data-view="front">正面</button>
+                                <button class="view-btn" data-view="back">背面</button>
+                                <button class="view-btn" data-view="side">側面</button>
+                            </div>
+                        </div>
+                        
+                        <div class="map-info">
+                            <p>點擊下方圖表區域，獲取更精準的局部經絡推薦</p>
+                            <div id="coord-display" class="coords">X: 0, Y: 0</div>
+                        </div>
+                        
+                        <div class="map-display">
+                            <div class="image-wrapper" id="map-wrapper">
+                                <img id="body-map" src="http://localhost:8000/images/front.png" alt="Body Map">
+                                <div id="click-marker" class="marker" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="mother-footer">
+                        <button id="submit-btn" class="primary large-btn">開始推薦</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Results -->
+            <div class="output-column">
+                <section class="control-panel results-section">
+                    <div class="card glass result-card" id="result-panel" style="display: none;">
+                        <h2><i class="icon">✨</i> 推薦穴位</h2>
+                        <div class="result-tabs">
+                            <button class="tab-btn active" data-tab="direct">直屬經脈</button>
+                            <button class="tab-btn" data-tab="paired">表裡經脈</button>
+                        </div>
+                        <div class="result-content">
+                            <div id="direct-results" class="tab-pane active">
+                                <!-- Results here -->
+                            </div>
+                            <div id="paired-results" class="tab-pane">
+                                <!-- Results here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy;2026 TCM Acupoint Recommender</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
